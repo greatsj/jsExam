@@ -1,0 +1,20 @@
+
+extends ./layout
+
+block content
+	h1 Movie News
+
+	form(action="/watcha/" method="GET")
+		input(type="text" name="search" value=seach)
+		input(type="submit" value="검색")
+
+	if search
+		p #{search} 에 대한 검색 결과입니다.
+	p #{newsItems.length} 개의 영화정보가 있습니다.
+
+	ul
+		each newsItem in newsItems
+			li
+				h2= newsItem.title
+				img(src=newsItem.image width="50%")
+				p= newsItem.content
